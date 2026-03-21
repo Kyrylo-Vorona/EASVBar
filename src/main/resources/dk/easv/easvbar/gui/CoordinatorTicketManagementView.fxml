@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="411.0" prefWidth="717.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.easvbar.gui.CoordinatorTicketManagementController">
+    <children>
+        <Label layoutX="26.0" layoutY="25.0" styleClass="main-title" text="Coordinator Dashboard">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+        <Button layoutX="547.0" layoutY="28.0" mnemonicParsing="false" styleClass="logout-button" text="Log Out">
+            <font>
+                <Font size="13.0" />
+            </font>
+        </Button>
+        <Label layoutX="48.0" layoutY="70.0" styleClass="subtitle" text="Ticket management - EASV party">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <HBox layoutX="48.0" layoutY="106.0" prefHeight="43.0" prefWidth="611.0" spacing="5.0">
+            <children>
+                <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="121.0" styleClass="admin-button" text="Create ticket" />
+                <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="109.0" styleClass="admin-button" text="Edit ticket" />
+                <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="158.0" styleClass="admin-button" text="Delete ticket" />
+                <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="227.0" styleClass="user-management-button" text="Back to event management" />
+            </children>
+        </HBox>
+        <TableView layoutX="50.0" layoutY="157.0" prefHeight="216.0" prefWidth="611.0">
+            <columns>
+                <TableColumn prefWidth="196.5283203125" text="Type" />
+                <TableColumn prefWidth="216.45281982421875" text="Price" />
+                <TableColumn prefWidth="197.4339599609375" text="Available" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>

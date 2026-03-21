@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="dk.easv.easvbar.gui.MainController"
+      spacing="15">
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <!-- Верхняя панель -->
+    <HBox alignment="CENTER_LEFT" spacing="10">
+        <Label text="Events at EASV:"
+               style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+
+        <Region HBox.hgrow="ALWAYS"/>
+
+        <Button text="Log In" onAction="#onLoginClick"/>
+    </HBox>
+
+    <!-- Список мероприятий -->
+    <ScrollPane fitToWidth="true">
+        <content>
+            <VBox fx:id="eventContainer" spacing="15"/>
+        </content>
+    </ScrollPane>
+
+</VBox>
+
+
