@@ -1,6 +1,7 @@
 module dk.easv.easvbar {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.graphics;
 
 
     opens dk.easv.easvbar to javafx.fxml;

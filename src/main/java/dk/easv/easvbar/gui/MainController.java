@@ -1,15 +1,22 @@
 package dk.easv.easvbar.gui;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -66,6 +73,7 @@ public class MainController implements Initializable {
         HBox.setHgrow(bottomSpacer, Priority.ALWAYS);
 
         Button buyButton = new Button("Buy ticket");
+        buyButton.setOnAction(e -> {openBuyTicketWindow(name, price);});
         buyButton.getStyleClass().add("buy-button");
 
         bottomRow.getChildren().addAll(priceLabel, bottomSpacer, buyButton);
@@ -75,8 +83,38 @@ public class MainController implements Initializable {
     }
 
     @FXML
-    private void onLoginClick() {
-        System.out.println("Login clicked");
+    private void onLoginClick(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/dk/easv/easvbar/gui/LoginView.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 700, 450);
+            if (getClass().getResource("/css/style.css") != null) {
+                scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
+            }
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void openBuyTicketWindow(String eventName, double price) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/dk/easv/easvbar/gui/BuyTicketView.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage buyStage = new Stage();
+            buyStage.setTitle("Buy Ticket for " + eventName);
+            Scene scene = new Scene(root, 500, 450);
+            if (getClass().getResource("/css/style.css") != null) {
+                scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
+            }
+            buyStage.setScene(scene);
+            buyStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 

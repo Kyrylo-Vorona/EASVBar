@@ -14,19 +14,19 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Label layoutX="136.0" layoutY="78.0" styleClass="login-title" text="Log In">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <VBox layoutX="71.0" layoutY="144.0" prefHeight="227.0" prefWidth="197.0" spacing="5.0">
+      <VBox alignment="CENTER" fillWidth="false" layoutY="59.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TextField prefHeight="76.0" prefWidth="197.0" promptText="Username" styleClass="login-input">
+            <Label styleClass="login-title" text="Log In">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <TextField prefHeight="76.0" prefWidth="213.0" promptText="Username" styleClass="login-input">
                <font>
                   <Font size="24.0" />
                </font>
             </TextField>
-            <TextField prefHeight="81.0" prefWidth="197.0" promptText="Password" styleClass="login-input">
+            <TextField prefHeight="81.0" prefWidth="213.0" promptText="Password" styleClass="login-input">
                <font>
                   <Font size="24.0" />
                </font>

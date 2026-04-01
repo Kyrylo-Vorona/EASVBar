@@ -1,46 +1,39 @@
 .root {
-    -fx-background-color: #808080; /* Темно-серый фон как на фото */
+    -fx-background-color: #808080;
     -fx-font-family: "Arial", sans-serif;
 }
 
-/* Главный заголовок "Events at EASV:" */
 .main-title {
     -fx-font-size: 40px;
     -fx-text-fill: white;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 5, 0, 0, 3);
 }
 
-/* Карточка события */
 .event-card {
-    -fx-background-color: #D3D3D3; /* Светло-серый фон карточки */
+    -fx-background-color: #D3D3D3;
     -fx-padding: 15;
     -fx-background-radius: 10;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 10, 0, 0, 5);
 }
 
-/* Название внутри карточки */
 .event-title {
     -fx-font-size: 22px;
     -fx-text-fill: #333333;
 }
 
-/* Дата, локация и описание */
 .event-date, .event-location, .event-description {
     -fx-font-size: 14px;
     -fx-text-fill: #333333;
 }
 
-/* Желтая плашка цены */
 .price-tag {
     -fx-background-color: #FFFF80;
     -fx-padding: 5 15;
     -fx-background-radius: 5;
     -fx-font-weight: bold;
-    /* Легкая тень для объема */
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 3, 0, 0, 1);
 }
 
-/* Черная кнопка Buy Ticket */
 .buy-button {
     -fx-background-color: #1A1A1A;
     -fx-text-fill: white;
@@ -54,7 +47,6 @@
     -fx-background-color: #333333;
 }
 
-/* Кнопка Log In */
 .login-button {
     -fx-background-color: #E0E0E0;
     -fx-background-radius: 5;
@@ -62,27 +54,23 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0, 0, 2);
 }
 
-/* Общий заголовок "Log in" */
 .login-title {
     -fx-font-size: 32px;
     -fx-text-fill: white;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 2);
 }
 
-/* Поля ввода (Username, Password) */
 .login-input {
-    -fx-background-color: #E0F7FA; /* Светло-голубой как на фото */
+    -fx-background-color: #E0F7FA;
     -fx-background-radius: 5;
     -fx-padding: 10;
     -fx-font-size: 18px;
     -fx-prompt-text-fill: #A0A0A0;
-    /* Тень внутрь или легкая внешняя */
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 8, 0, 0, 4);
 }
 
-/* Фиолетовая кнопка SIGN IN */
 .sign-in-button {
-    -fx-background-color: #9594FF; /* Фиолетовый оттенок */
+    -fx-background-color: #9594FF;
     -fx-text-fill: white;
     -fx-font-size: 20px;
     -fx-font-weight: bold;
@@ -95,14 +83,12 @@
     -fx-background-color: #7E7DFF;
 }
 
-/* Кнопка Back в углу */
 .back-button {
     -fx-background-color: #E0E0E0;
     -fx-background-radius: 5;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 4, 0, 0, 2);
 }
 
-/* Кнопки "Assign coordinator" и "Delete event" */
 .admin-button {
     -fx-background-color: white;
     -fx-text-fill: black;
@@ -112,9 +98,8 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 2);
 }
 
-/* Желтая кнопка "User management" */
 .user-management-button {
-    -fx-background-color: #F0F580; /* Светло-желтый как на фото */
+    -fx-background-color: #F0F580;
     -fx-text-fill: black;
     -fx-background-radius: 8;
     -fx-padding: 8 20;
@@ -122,17 +107,15 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 2);
 }
 
-/* Большая кнопка Log Out */
 .logout-button {
     -fx-background-color: white;
     -fx-text-fill: black;
-    -fx-font-size: 24px; /* Крупный шрифт */
+    -fx-font-size: 24px;
     -fx-background-radius: 10;
     -fx-padding: 5 25;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 8, 0, 0, 3);
 }
 
-/* Стили для таблицы (TableView) */
 .table-view {
     -fx-background-color: white;
     -fx-background-radius: 10;
@@ -140,11 +123,10 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 5);
 }
 
-/* Убираем лишние границы у ячеек, чтобы было как на макете */
 .table-view .column-header, .table-view .column-header-background {
     -fx-background-color: transparent;
     -fx-border-color: #DDDDDD;
-    -fx-border-width: 0 1 1 0; /* Линии только справа и снизу */
+    -fx-border-width: 0 1 1 0;
 }
 
 .table-view .table-cell {
@@ -153,32 +135,31 @@
     -fx-padding: 10;
 }
 
-/* Подзаголовок (Event management) */
 .subtitle {
-    -fx-font-size: 28px; /* Уменьшаем с 40px до 28px */
+    -fx-font-size: 28px;
     -fx-text-fill: white;
     -fx-font-weight: normal;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 3, 0, 0, 2);
 }
 
-/* Стиль для TextArea с надписью Description */
 .description-textarea {
-    -fx-background-color: #E0F7FA; /* Тот же голубой цвет */
+    -fx-background-color: #E0F7FA;
     -fx-background-radius: 5;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 8, 0, 0, 4);
 }
 
-/* Изменяем фон внутренней области прокрутки и самого текстового поля */
 .description-textarea .content {
     -fx-background-color: #E0F7FA;
     -fx-prompt-text-fill: #A0A0A0;
     -fx-font-size: 18px;
 }
 
-/* Убираем стандартную белую заливку при фокусе, если нужно */
 .description-textarea:focused .content {
     -fx-background-color: #E0F7FA;
 }
 
+.combo-box {
+    -fx-font-size: 16px;
+}
 
 
