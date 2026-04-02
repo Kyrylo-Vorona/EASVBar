@@ -21,7 +21,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
-
     @FXML
     private VBox eventContainer;
 
@@ -73,7 +72,7 @@ public class MainController implements Initializable {
         HBox.setHgrow(bottomSpacer, Priority.ALWAYS);
 
         Button buyButton = new Button("Buy ticket");
-        buyButton.setOnAction(e -> {openBuyTicketWindow(name, price);});
+        buyButton.setOnAction(e -> {openBuyTicketWindow(e, name, price);});
         buyButton.getStyleClass().add("buy-button");
 
         bottomRow.getChildren().addAll(priceLabel, bottomSpacer, buyButton);
@@ -99,18 +98,16 @@ public class MainController implements Initializable {
         }
     }
 
-    private void openBuyTicketWindow(String eventName, double price) {
+    private void openBuyTicketWindow(ActionEvent event, String eventName, double price) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/dk/easv/easvbar/gui/BuyTicketView.fxml"));
-            Parent root = fxmlLoader.load();
-            Stage buyStage = new Stage();
-            buyStage.setTitle("Buy Ticket for " + eventName);
-            Scene scene = new Scene(root, 500, 450);
+            Scene scene = new Scene(fxmlLoader.load(), 700, 450);
             if (getClass().getResource("/css/style.css") != null) {
                 scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
             }
-            buyStage.setScene(scene);
-            buyStage.show();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
