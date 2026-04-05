@@ -16,7 +16,7 @@
                 <Font size="24.0" />
             </font>
         </Label>
-        <Button layoutX="502.0" layoutY="28.0" mnemonicParsing="false" styleClass="logout-button" text="Log Out">
+        <Button layoutX="502.0" layoutY="28.0" mnemonicParsing="false" onAction="#logOut" styleClass="logout-button" text="Log Out">
             <font>
                 <Font size="13.0" />
             </font>
@@ -28,11 +28,11 @@
         </Label>
         <HBox layoutX="48.0" layoutY="106.0" prefHeight="43.0" prefWidth="562.0" spacing="5.0">
             <children>
-                <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="91.0" styleClass="admin-button" text="Add user" />
+                <Button mnemonicParsing="false" onAction="#openAddUserView" prefHeight="43.0" prefWidth="91.0" styleClass="admin-button" text="Add user" />
                 <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="95.0" styleClass="admin-button" text="Edit user" />
             <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="112.0" styleClass="admin-button" text="Delete user" />
             <Region prefHeight="43.0" prefWidth="43.0" />
-                <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="216.0" styleClass="user-management-button" text="Back to event management" />
+                <Button mnemonicParsing="false" onAction="#backToEventManagement" prefHeight="43.0" prefWidth="216.0" styleClass="user-management-button" text="Back to event management" />
             </children>
         </HBox>
         <TableView layoutX="50.0" layoutY="157.0" prefHeight="216.0" prefWidth="562.0">

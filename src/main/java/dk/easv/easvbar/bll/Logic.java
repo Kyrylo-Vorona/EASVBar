@@ -20,7 +20,13 @@ public class Logic {
         if (username.isEmpty() || password.isEmpty()) {
             return null;
         }
-
         return DALManager.getInstance().getUsersDAO().login(username, password);
+    }
+
+    public void addUser(String username, String password, String email, String role) throws SQLException {
+        if (username.isEmpty() || password.isEmpty() || email.isEmpty() || role.isEmpty()) {
+            return;
+        }
+        DALManager.getInstance().getUsersDAO().addUser(username, password, email, role);
     }
 }

@@ -16,7 +16,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button layoutX="495.0" layoutY="28.0" mnemonicParsing="false" styleClass="logout-button" text="Log Out">
+      <Button layoutX="495.0" layoutY="28.0" mnemonicParsing="false" onAction="#logOut" styleClass="logout-button" text="Log Out">
          <font>
             <Font size="13.0" />
          </font>
@@ -31,7 +31,7 @@
             <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="159.0" styleClass="admin-button" text="Assign coordinator" />
             <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="132.0" styleClass="admin-button" text="Delete event" />
             <Region prefHeight="43.0" prefWidth="58.0" />
-            <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="192.0" styleClass="user-management-button" text="User management" />
+            <Button mnemonicParsing="false" onAction="#backToUserManagement" prefHeight="43.0" prefWidth="192.0" styleClass="user-management-button" text="User management" />
          </children>
       </HBox>
       <TableView layoutX="50.0" layoutY="157.0" prefHeight="216.0" prefWidth="545.0">

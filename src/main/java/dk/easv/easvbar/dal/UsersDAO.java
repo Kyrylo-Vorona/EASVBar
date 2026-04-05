@@ -2,10 +2,7 @@ package dk.easv.easvbar.dal;
 
 import dk.easv.easvbar.be.User;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class UsersDAO {
     private final ConnectionManager cm;
@@ -16,12 +13,9 @@ public class UsersDAO {
 
         try (Connection con = cm.getConnection();
              PreparedStatement pstmt = con.prepareStatement(sql)) {
-
             pstmt.setString(1, username);
             pstmt.setString(2, password);
-
             ResultSet rs = pstmt.executeQuery();
-
             if (rs.next()) {
                 int id = rs.getInt("id");
                 String role = rs.getString("role");
@@ -29,5 +23,19 @@ public class UsersDAO {
             }
         }
         return null;
+    }
+
+    public void addUser(String username, String password, String email, String role) throws SQLException {
+        try (Connection con = cm.getConnection()) {
+            String add = "INSERT INTO Users (username, password_hash, email, role) VALUES (?, ?, ?, ?)";
+            PreparedStatement pstmt = con.prepareStatement(add);
+            pstmt.setString(1, username);
+            pstmt.setString(2, password);
+            pstmt.setString(3, email);
+            pstmt.setString(4, role);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new SQLException("Could not add user", e);
+        }
     }
 }

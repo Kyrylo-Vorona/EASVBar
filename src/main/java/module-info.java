@@ -6,6 +6,7 @@ module dk.easv.easvbar {
     requires com.microsoft.sqlserver.jdbc;
     requires java.sql;
     requires java.naming;
+    //requires dk.easv.easvbar;
 
 
     opens dk.easv.easvbar to javafx.fxml;

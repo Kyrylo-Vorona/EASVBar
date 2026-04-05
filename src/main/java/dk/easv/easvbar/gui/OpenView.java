@@ -8,19 +8,14 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class BuyTicketController {
-    OpenView openview = new OpenView();
-
-    public void onBuyTicketClick(ActionEvent actionEvent) {
-    }
-
-    public void onCancelClick(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/dk/easv/easvbar/gui/MainView.fxml"));
+public class OpenView {
+    public void openView(String filepath, ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filepath));
         Scene scene = new Scene(fxmlLoader.load(), 700, 450);
         if (getClass().getResource("/css/style.css") != null) {
             scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
         }
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
     }
