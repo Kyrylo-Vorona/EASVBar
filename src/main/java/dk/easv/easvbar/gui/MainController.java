@@ -1,5 +1,6 @@
 package dk.easv.easvbar.gui;
 
+import dk.easv.easvbar.be.EventException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,7 +12,6 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -83,8 +83,8 @@ public class MainController implements Initializable {
         try {
             String filepath = "/dk/easv/easvbar/gui/LoginView.fxml";
             openview.openView(filepath, event);
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (EventException e) {
+            OpenView.showErrorAlert(e.getMessage());
         }
     }
 
@@ -92,8 +92,8 @@ public class MainController implements Initializable {
         try {
             String filepath = "/dk/easv/easvbar/gui/BuyTicketView.fxml";
             openview.openView(filepath, event);
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (EventException e) {
+            OpenView.showErrorAlert(e.getMessage());
         }
     }
 }

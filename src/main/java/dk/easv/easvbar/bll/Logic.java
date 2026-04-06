@@ -1,5 +1,6 @@
 package dk.easv.easvbar.bll;
 
+import dk.easv.easvbar.be.EventException;
 import dk.easv.easvbar.be.User;
 import dk.easv.easvbar.dal.DALManager;
 
@@ -16,14 +17,14 @@ public class Logic {
         return instance;
     }
 
-    public User login(String username, String password) throws SQLException {
+    public User login(String username, String password) throws EventException {
         if (username.isEmpty() || password.isEmpty()) {
             return null;
         }
         return DALManager.getInstance().getUsersDAO().login(username, password);
     }
 
-    public void addUser(String username, String password, String email, String role) throws SQLException {
+    public void addUser(String username, String password, String email, String role) throws EventException {
         if (username.isEmpty() || password.isEmpty() || email.isEmpty() || role.isEmpty()) {
             return;
         }

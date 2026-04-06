@@ -1,12 +1,7 @@
 package dk.easv.easvbar.gui;
 
+import dk.easv.easvbar.be.EventException;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class BuyTicketController {
     OpenView openview = new OpenView();
@@ -14,14 +9,12 @@ public class BuyTicketController {
     public void onBuyTicketClick(ActionEvent actionEvent) {
     }
 
-    public void onCancelClick(ActionEvent actionEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/dk/easv/easvbar/gui/MainView.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 700, 450);
-        if (getClass().getResource("/css/style.css") != null) {
-            scene.getStylesheets().add(getClass().getResource("/css/style.css").toExternalForm());
+    public void onCancelClick(ActionEvent event) {
+        try {
+            String filepath = "/dk/easv/easvbar/gui/MainView.fxml";
+            openview.openView(filepath, event);
+        } catch (EventException e) {
+            OpenView.showErrorAlert(e.getMessage());
         }
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
     }
 }
