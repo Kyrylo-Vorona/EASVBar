@@ -22,7 +22,7 @@
                   <Font size="24.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="password" prefHeight="76.0" prefWidth="213.0" promptText="Password">
+            <PasswordField fx:id="password" prefHeight="76.0" prefWidth="213.0" promptText="Password" styleClass="login-input">
                <font>
                   <Font size="24.0" />
                </font>
