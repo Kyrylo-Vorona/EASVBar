@@ -48,7 +48,7 @@
                     <children>
                         <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#openAddUserView" prefHeight="45.0" styleClass="admin-button" text="Add User" HBox.hgrow="ALWAYS" />
                         <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#openEditUserView" prefHeight="45.0" styleClass="admin-button" text="Edit User" HBox.hgrow="ALWAYS" />
-                        <Button maxWidth="Infinity" mnemonicParsing="false" prefHeight="45.0" styleClass="admin-button" text="Delete User" HBox.hgrow="ALWAYS" />
+                        <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#deleteUser" prefHeight="45.0" styleClass="admin-button" text="Delete User" HBox.hgrow="ALWAYS" />
                         <Region prefWidth="30.0" />
                         <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#backToEventManagement" prefHeight="45.0" styleClass="user-management-button" text="Event Management" HBox.hgrow="ALWAYS" />
                     </children>

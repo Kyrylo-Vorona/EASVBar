@@ -67,6 +67,14 @@ public class AdminUserManagementController implements Initializable {
         }
     }
 
+    public void deleteUser(ActionEvent event) throws EventException {
+        User selected = userTable.getSelectionModel().getSelectedItem();
+        if (selected != null) {
+            logic.deleteUser(selected);
+            readDataIntoList();
+        }
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {

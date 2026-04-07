@@ -4,7 +4,6 @@ import dk.easv.easvbar.be.EventException;
 import dk.easv.easvbar.be.User;
 import dk.easv.easvbar.dal.DALManager;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class Logic {
@@ -34,6 +33,10 @@ public class Logic {
 
     public void editUser(User user) throws EventException {
         DALManager.getInstance().getUsersDAO().editUser(user);
+    }
+
+    public void deleteUser(User user) throws EventException {
+        DALManager.getInstance().getUsersDAO().deleteUser(user);
     }
 
     public List<User> getAllUsers() throws EventException {

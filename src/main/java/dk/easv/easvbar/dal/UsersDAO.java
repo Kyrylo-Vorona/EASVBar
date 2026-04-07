@@ -59,6 +59,17 @@ public class UsersDAO {
         }
     }
 
+    public void deleteUser(User user) throws EventException {
+        try (Connection con = cm.getConnection()) {
+            String add = "DELETE FROM Users WHERE id = ?";
+            PreparedStatement pstmt = con.prepareStatement(add);
+            pstmt.setInt(1, user.getId());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new EventException("Database error: Could not delete selected user", e);
+        }
+    }
+
     public List<User> getAllUsers() throws EventException {
         List<User> users = new ArrayList<>();
         try (Connection con = cm.getConnection()) {
