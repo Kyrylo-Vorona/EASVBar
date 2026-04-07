@@ -58,20 +58,28 @@ public class AdminUserManagementController implements Initializable {
         }
     }
 
-    public void openEditUserView(ActionEvent event) throws EventException {
+    public void openEditUserView(ActionEvent event) {
         User selected = userTable.getSelectionModel().getSelectedItem();
         if (selected != null) {
-            FXMLLoader loader = openview.openView("/dk/easv/easvbar/gui/AddUserView.fxml", event);
-            AddUserController controller = loader.getController();
-            controller.setUserData(selected);
+            try {
+                FXMLLoader loader = openview.openView("/dk/easv/easvbar/gui/AddUserView.fxml", event);
+                AddUserController controller = loader.getController();
+                controller.setUserData(selected);
+            } catch (EventException e) {
+                OpenView.showErrorAlert(e.getMessage());
+            }
         }
     }
 
-    public void deleteUser(ActionEvent event) throws EventException {
+    public void deleteUser(ActionEvent event) {
         User selected = userTable.getSelectionModel().getSelectedItem();
         if (selected != null) {
-            logic.deleteUser(selected);
-            readDataIntoList();
+            try {
+                logic.deleteUser(selected);
+                readDataIntoList();
+            } catch (EventException e) {
+                OpenView.showErrorAlert(e.getMessage());
+            }
         }
     }
 
