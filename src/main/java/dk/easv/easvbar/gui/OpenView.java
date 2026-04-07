@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class OpenView {
-    public void openView(String filepath, ActionEvent event) throws EventException {
+    public FXMLLoader openView(String filepath, ActionEvent event) throws EventException {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(filepath));
             Scene scene = new Scene(fxmlLoader.load(), 700, 450);
@@ -21,6 +21,7 @@ public class OpenView {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
+            return fxmlLoader;
         }catch(IOException e){
             throw new EventException("Could not load the window: " + filepath, e);
         }

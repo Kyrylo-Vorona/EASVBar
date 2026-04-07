@@ -4,6 +4,8 @@ import dk.easv.easvbar.be.EventException;
 import dk.easv.easvbar.be.User;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UsersDAO {
     private final ConnectionManager cm;
@@ -19,8 +21,9 @@ public class UsersDAO {
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 int id = rs.getInt("id");
+                String email = rs.getString("email");
                 String role = rs.getString("role");
-                return new User(id, username, role);
+                return new User(id, username, role, email);
             }
         } catch (SQLException e) {
             throw new EventException("Database error: Could not log in", e);
@@ -40,5 +43,28 @@ public class UsersDAO {
         } catch (SQLException e) {
             throw new EventException("Database error: Could not add user", e);
         }
+    }
+
+    public List<User> getAllUsers() throws EventException {
+        List<User> users = new ArrayList<>();
+
+        try (Connection con = cm.getConnection()) {
+            String select = "SELECT * FROM Users";
+            PreparedStatement pstmt = con.prepareStatement(select);
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                users.add(new User(
+                        rs.getInt("id"),
+                        rs.getString("username"),
+                        rs.getString("role"),
+                        rs.getString("email")
+                ));
+            }
+
+        } catch (SQLException e) {
+            throw new EventException("Could not get the list of movies", e);
+        }
+        return users;
     }
 }

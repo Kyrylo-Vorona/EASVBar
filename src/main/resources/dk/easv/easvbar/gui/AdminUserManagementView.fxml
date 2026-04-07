@@ -29,18 +29,17 @@
         <HBox layoutX="48.0" layoutY="106.0" prefHeight="43.0" prefWidth="562.0" spacing="5.0">
             <children>
                 <Button mnemonicParsing="false" onAction="#openAddUserView" prefHeight="43.0" prefWidth="91.0" styleClass="admin-button" text="Add user" />
-                <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="95.0" styleClass="admin-button" text="Edit user" />
+                <Button mnemonicParsing="false" onAction="#openEditUserView" prefHeight="43.0" prefWidth="95.0" styleClass="admin-button" text="Edit user" />
             <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="112.0" styleClass="admin-button" text="Delete user" />
             <Region prefHeight="43.0" prefWidth="43.0" />
                 <Button mnemonicParsing="false" onAction="#backToEventManagement" prefHeight="43.0" prefWidth="216.0" styleClass="user-management-button" text="Back to event management" />
             </children>
         </HBox>
-        <TableView layoutX="50.0" layoutY="157.0" prefHeight="216.0" prefWidth="562.0">
+        <TableView fx:id="userTable" layoutX="50.0" layoutY="157.0" prefHeight="216.0" prefWidth="562.0">
             <columns>
-                <TableColumn prefWidth="139.47165298461914" text="Full name" />
-                <TableColumn prefWidth="108.6793212890625" text="Username" />
-                <TableColumn prefWidth="180.22637939453125" text="Email" />
-                <TableColumn prefWidth="133.13217163085938" text="Role" />
+                <TableColumn fx:id="usernameColumn" prefWidth="182.0377197265625" text="Username" />
+                <TableColumn fx:id="emailColumn" prefWidth="242.71702575683594" text="Email" />
+                <TableColumn fx:id="roleColumn" prefWidth="137.66033935546875" text="Role" />
             </columns>
         </TableView>
     </children>

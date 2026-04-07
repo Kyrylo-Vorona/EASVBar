@@ -5,6 +5,7 @@ import dk.easv.easvbar.be.User;
 import dk.easv.easvbar.dal.DALManager;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class Logic {
     private static Logic instance;
@@ -29,5 +30,9 @@ public class Logic {
             return;
         }
         DALManager.getInstance().getUsersDAO().addUser(username, password, email, role);
+    }
+
+    public List<User> getAllUsers() throws EventException {
+        return DALManager.getInstance().getUsersDAO().getAllUsers();
     }
 }

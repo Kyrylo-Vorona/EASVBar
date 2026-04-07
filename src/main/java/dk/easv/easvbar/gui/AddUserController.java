@@ -1,6 +1,7 @@
 package dk.easv.easvbar.gui;
 
 import dk.easv.easvbar.be.EventException;
+import dk.easv.easvbar.be.User;
 import dk.easv.easvbar.bll.Logic;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +19,7 @@ public class AddUserController {
 
     private Logic logic = Logic.getInstance();
     OpenView openview = new OpenView();
+    private User userToEdit;
 
     public void cancel(ActionEvent event) {
         try {
@@ -26,6 +28,13 @@ public class AddUserController {
         }catch(EventException e){
             OpenView.showErrorAlert(e.getMessage());
         }
+    }
+
+    public void setUserData(User user) {
+        this.userToEdit = user;
+        usernameField.setText(user.getUsername());
+        emailField.setText(user.getEmail());
+        roleField.setText(user.getRole());
     }
 
     public void addUser(ActionEvent event) {
