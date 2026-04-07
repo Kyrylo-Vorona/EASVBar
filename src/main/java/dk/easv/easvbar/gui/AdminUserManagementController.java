@@ -26,7 +26,6 @@ public class AdminUserManagementController implements Initializable {
     @FXML
     private TableView<User> userTable;
     private ObservableList<User> userList;
-    private User selected;
 
     private Logic logic = Logic.getInstance();
 

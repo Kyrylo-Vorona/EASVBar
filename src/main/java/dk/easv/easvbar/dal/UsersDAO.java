@@ -45,14 +45,26 @@ public class UsersDAO {
         }
     }
 
+    public void editUser(User user) throws EventException {
+        try (Connection con = cm.getConnection()) {
+            String add = "UPDATE Users SET username = ?, email = ?, role = ? WHERE id = ?";
+            PreparedStatement pstmt = con.prepareStatement(add);
+            pstmt.setString(1, user.getUsername());
+            pstmt.setString(2, user.getEmail());
+            pstmt.setString(3, user.getRole());
+            pstmt.setInt(4, user.getId());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new EventException("Database error: Could not edit selected user", e);
+        }
+    }
+
     public List<User> getAllUsers() throws EventException {
         List<User> users = new ArrayList<>();
-
         try (Connection con = cm.getConnection()) {
             String select = "SELECT * FROM Users";
             PreparedStatement pstmt = con.prepareStatement(select);
             ResultSet rs = pstmt.executeQuery();
-
             while (rs.next()) {
                 users.add(new User(
                         rs.getInt("id"),
@@ -61,7 +73,6 @@ public class UsersDAO {
                         rs.getString("email")
                 ));
             }
-
         } catch (SQLException e) {
             throw new EventException("Could not get the list of movies", e);
         }

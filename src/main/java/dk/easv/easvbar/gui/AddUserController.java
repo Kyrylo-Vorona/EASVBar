@@ -5,6 +5,7 @@ import dk.easv.easvbar.be.User;
 import dk.easv.easvbar.bll.Logic;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 public class AddUserController {
@@ -16,6 +17,8 @@ public class AddUserController {
     private TextField emailField;
     @FXML
     private TextField roleField;
+    @FXML
+    private Button saveButton;
 
     private Logic logic = Logic.getInstance();
     OpenView openview = new OpenView();
@@ -35,6 +38,7 @@ public class AddUserController {
         usernameField.setText(user.getUsername());
         emailField.setText(user.getEmail());
         roleField.setText(user.getRole());
+        saveButton.setText("Update");
     }
 
     public void addUser(ActionEvent event) {
@@ -43,9 +47,15 @@ public class AddUserController {
             String password = passwordField.getText();
             String email = emailField.getText();
             String role = roleField.getText();
-            logic.addUser(username, password, email, role);
-            String filepath = "/dk/easv/easvbar/gui/AdminUserManagementView.fxml";
-            openview.openView(filepath, event);
+            if(userToEdit == null) {
+                logic.addUser(username, password, email, role);
+            } else {
+                userToEdit.setUsername(username);
+                userToEdit.setEmail(email);
+                userToEdit.setRole(role);
+                logic.editUser(userToEdit);
+            }
+            cancel(event);
         }catch (EventException e){
             OpenView.showErrorAlert(e.getMessage());
         }

@@ -32,6 +32,10 @@ public class Logic {
         DALManager.getInstance().getUsersDAO().addUser(username, password, email, role);
     }
 
+    public void editUser(User user) throws EventException {
+        DALManager.getInstance().getUsersDAO().editUser(user);
+    }
+
     public List<User> getAllUsers() throws EventException {
         return DALManager.getInstance().getUsersDAO().getAllUsers();
     }
