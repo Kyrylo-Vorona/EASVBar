@@ -44,8 +44,8 @@ public class Logic {
         return DALManager.getInstance().getUsersDAO().getAllUsers();
     }
 
-    public void createEvent(String name, String start, String end, String loc, String guide, String notes, int tix) throws EventException {
-        DALManager.getInstance().getEventsDAO().createEvent(name, start,  end, loc, guide, notes, tix);
+    public void createEvent(String name, String start, String end, String loc, String guide, String notes, int price) throws EventException {
+        DALManager.getInstance().getEventsDAO().createEvent(name, start,  end, loc, guide, notes, price);
     }
 
     public List<Event> getAllEvents() throws EventException {

@@ -64,7 +64,7 @@ public class MainController implements Initializable {
             eventContainer.getChildren().clear();
             List<Event> events = logic.getAllEvents();
             for (Event e : events) {
-                addEventCard(e.getName(), e.getStartTime(), e.getLocation(), e.getNotes(), e.getTickets());
+                addEventCard(e.getName(), e.getStartTime(), e.getLocation(), e.getNotes(), e.getPrice());
             }
         } catch (Exception ex) {
             OpenView.showErrorAlert("Load error: " + ex.getMessage());

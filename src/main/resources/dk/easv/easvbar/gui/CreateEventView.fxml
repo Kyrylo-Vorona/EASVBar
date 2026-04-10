@@ -40,7 +40,7 @@
 
                         <TextArea fx:id="txtNotes" prefHeight="100.0" promptText="Notes / Extra Information" styleClass="description-textarea" wrapText="true" VBox.vgrow="ALWAYS" />
 
-                        <TextField fx:id="txtTickets" prefHeight="40.0" promptText="Total Tickets Available" styleClass="login-input" />
+                        <TextField fx:id="txtTickets" prefHeight="40.0" promptText="Price for standart ticket" styleClass="login-input" />
                     </children>
                 </VBox>
 

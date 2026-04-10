@@ -1,10 +1,31 @@
 package dk.easv.easvbar.gui;
 
+import dk.easv.easvbar.be.Event;
 import dk.easv.easvbar.be.EventException;
+import dk.easv.easvbar.be.User;
 import dk.easv.easvbar.bll.Logic;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
-public class CoordinatorEventManagementController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class CoordinatorEventManagementController implements Initializable {
+    @FXML
+    private TableColumn<Event, String> eventNameColumn;
+    @FXML
+    private TableColumn<Event, String> eventDateColumn;
+    @FXML
+    private TableColumn<Event, String> eventLocationColumn;
+    @FXML
+    private TableView<Event> eventTable;
+    private ObservableList<Event> eventList;
 
     private Logic logic = Logic.getInstance();
     OpenView openview = new OpenView();
@@ -43,5 +64,23 @@ public class CoordinatorEventManagementController {
         } catch (EventException e) {
             OpenView.showErrorAlert(e.getMessage());
         }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            readDataIntoList();
+        } catch (EventException e) {
+            OpenView.showErrorAlert(e.getMessage());
+        }
+    }
+
+    private void readDataIntoList() throws EventException {
+        eventList = FXCollections.observableArrayList();
+        eventList.addAll(logic.getAllEvents());
+        eventTable.setItems(eventList);
+        eventNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        eventDateColumn.setCellValueFactory(new PropertyValueFactory<>("startTime"));
+        eventLocationColumn.setCellValueFactory(new PropertyValueFactory<>("location"));
     }
 }

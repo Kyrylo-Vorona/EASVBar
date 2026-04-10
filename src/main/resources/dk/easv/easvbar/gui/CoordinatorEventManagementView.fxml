@@ -53,11 +53,11 @@
                     </children>
                 </VBox>
 
-                <TableView VBox.vgrow="ALWAYS">
+                <TableView fx:id="eventTable" VBox.vgrow="ALWAYS">
                     <columns>
-                        <TableColumn prefWidth="120.0" text="Event Name" />
-                        <TableColumn prefWidth="70.0" text="Date" />
-                        <TableColumn prefWidth="100.0" text="Location" />
+                        <TableColumn fx:id="eventNameColumn" prefWidth="120.0" text="Event Name" />
+                        <TableColumn fx:id="eventDateColumn" prefWidth="70.0" text="Date" />
+                        <TableColumn fx:id="eventLocationColumn" prefWidth="100.0" text="Location" />
                     </columns>
                     <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
