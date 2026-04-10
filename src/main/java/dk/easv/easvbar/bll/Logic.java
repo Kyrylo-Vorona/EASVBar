@@ -1,5 +1,6 @@
 package dk.easv.easvbar.bll;
 
+import dk.easv.easvbar.be.Event;
 import dk.easv.easvbar.be.EventException;
 import dk.easv.easvbar.be.User;
 import dk.easv.easvbar.dal.DALManager;
@@ -41,5 +42,13 @@ public class Logic {
 
     public List<User> getAllUsers() throws EventException {
         return DALManager.getInstance().getUsersDAO().getAllUsers();
+    }
+
+    public void createEvent(String name, String start, String end, String loc, String guide, String notes, int tix) throws EventException {
+        DALManager.getInstance().getEventsDAO().createEvent(name, start,  end, loc, guide, notes, tix);
+    }
+
+    public List<Event> getAllEvents() throws EventException {
+        return DALManager.getInstance().getEventsDAO().getAllEvents();
     }
 }

@@ -37,8 +37,7 @@
 
                 <HBox alignment="CENTER_RIGHT" spacing="10.0">
                     <children>
-                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" styleClass="admin-button" text="Revoke Ticket" />
-                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="80.0" styleClass="logout-button" text="Close" />
+                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" styleClass="logout-button" text="Close" />
                     </children>
                 </HBox>
             </children>

@@ -2,6 +2,7 @@ package dk.easv.easvbar.dal;
 
 public class DALManager {
     private UsersDAO usersDAO;
+    private EventsDAO eventsDAO;
     private static DALManager instance;
 
     public static DALManager getInstance() {
@@ -20,5 +21,10 @@ public class DALManager {
     public UsersDAO getUsersDAO() {
         if (usersDAO == null) usersDAO = new UsersDAO();
         return usersDAO;
+    }
+
+    public EventsDAO getEventsDAO() {
+        if (eventsDAO ==  null) eventsDAO = new EventsDAO();
+        return eventsDAO;
     }
 }

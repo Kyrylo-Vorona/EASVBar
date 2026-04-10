@@ -24,7 +24,7 @@
                                 <Font name="System Bold" size="24.0" />
                             </font>
                         </Label>
-                        <Button mnemonicParsing="false" styleClass="logout-button" text="Log Out" />
+                        <Button mnemonicParsing="false" onAction="#logOut" styleClass="logout-button" text="Log Out" />
                     </children>
                 </HBox>
 
@@ -38,7 +38,7 @@
                     <children>
                         <HBox spacing="10.0">
                             <children>
-                                <Button maxWidth="Infinity" mnemonicParsing="false" prefHeight="40.0" styleClass="admin-button" text="Create Event" HBox.hgrow="ALWAYS" />
+                                <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#CreateEvent" prefHeight="40.0" styleClass="admin-button" text="Create Event" HBox.hgrow="ALWAYS" />
                                 <Button maxWidth="Infinity" mnemonicParsing="false" prefHeight="40.0" styleClass="admin-button" text="Edit Event" HBox.hgrow="ALWAYS" />
                                 <Button maxWidth="Infinity" mnemonicParsing="false" prefHeight="40.0" styleClass="admin-button" text="Delete" HBox.hgrow="ALWAYS" />
                             </children>
@@ -46,8 +46,8 @@
                         <HBox spacing="10.0">
                             <children>
                                 <Button maxWidth="Infinity" mnemonicParsing="false" prefHeight="40.0" styleClass="admin-button" text="Assign Coord." HBox.hgrow="ALWAYS" />
-                                <Button maxWidth="Infinity" mnemonicParsing="false" prefHeight="40.0" styleClass="user-management-button" text="Tickets management" HBox.hgrow="ALWAYS" />
-                                <Button maxWidth="Infinity" mnemonicParsing="false" prefHeight="40.0" styleClass="user-management-button" text="Sold Tickets" HBox.hgrow="ALWAYS" />
+                                <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#backToTicketManagement" prefHeight="40.0" styleClass="user-management-button" text="Tickets management" HBox.hgrow="ALWAYS" />
+                                <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#openSoldTicketsView" prefHeight="40.0" styleClass="user-management-button" text="Sold Tickets" HBox.hgrow="ALWAYS" />
                             </children>
                         </HBox>
                     </children>
