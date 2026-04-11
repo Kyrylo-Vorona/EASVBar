@@ -3,6 +3,7 @@ package dk.easv.easvbar.be;
 public class Event {
     private int id, price;
     private String name, location, notes, startTime, endTime, locationGuidance;
+    private String coordinatorNames;
 
     public Event(int id, String name, String startTime, String endTime, String location, String locationGuidance, String notes, int price) {
         this.id = id;
@@ -13,6 +14,7 @@ public class Event {
         this.locationGuidance = locationGuidance;
         this.notes = notes;
         this.price = price;
+        this.coordinatorNames = "";
     }
 
     public int getId() {
@@ -23,5 +25,12 @@ public class Event {
     public String getLocation() { return location; }
     public String getNotes() { return notes; }
     public int getPrice() { return price; }
+    public String getCoordinatorNames() { return coordinatorNames; }
 
+    public void setName(String name) { this.name = name; }
+    public void setStartTime(String startTime) { this.startTime = startTime; }
+    public void setLocation(String location) { this.location =  location; }
+    public void setNotes(String notes) { this.notes = notes; }
+    public void setPrice(int price) { this.price = price; }
+    public void setCoordinatorNames(String coordinatorNames) { this.coordinatorNames = coordinatorNames; }
 }

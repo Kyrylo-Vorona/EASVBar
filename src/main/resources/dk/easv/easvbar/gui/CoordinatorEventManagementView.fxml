@@ -58,7 +58,7 @@
                         <TableColumn fx:id="eventNameColumn" prefWidth="103.24532979726791" text="Event Name" />
                         <TableColumn fx:id="eventDateColumn" prefWidth="80.60375213623047" text="Date" />
                         <TableColumn fx:id="eventLocationColumn" prefWidth="73.3585205078125" text="Location" />
-                  <TableColumn prefWidth="148.5283203125" text="Coordinators" />
+                  <TableColumn fx:id="coordinatorsColumn" prefWidth="148.5283203125" text="Coordinators" />
                     </columns>
                     <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

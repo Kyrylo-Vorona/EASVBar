@@ -15,6 +15,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class CoordinatorEventManagementController implements Initializable {
@@ -25,7 +26,7 @@ public class CoordinatorEventManagementController implements Initializable {
     @FXML
     private TableColumn<Event, String> eventLocationColumn;
     @FXML
-    private TableColumn<User, String> coordinatorsColumn;
+    private TableColumn<Event, String> coordinatorsColumn;
     @FXML
     private TableView<Event> eventTable;
     private ObservableList<Event> eventList;
@@ -93,10 +94,21 @@ public class CoordinatorEventManagementController implements Initializable {
 
     private void readDataIntoList() throws EventException {
         eventList = FXCollections.observableArrayList();
-        eventList.addAll(logic.getAllEvents());
+        List<Event> allEvents = logic.getAllEvents();
+        for (Event e : allEvents) {
+            try {
+                String names = logic.getCoordinatorsForEvent(e.getId());
+                e.setCoordinatorNames(names);
+                eventList.add(e);
+            } catch (Exception ex) {
+                e.setCoordinatorNames("Error loading");
+                eventList.add(e);
+            }
+        }
         eventTable.setItems(eventList);
         eventNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         eventDateColumn.setCellValueFactory(new PropertyValueFactory<>("startTime"));
         eventLocationColumn.setCellValueFactory(new PropertyValueFactory<>("location"));
+        coordinatorsColumn.setCellValueFactory(new PropertyValueFactory<>("coordinatorNames"));
     }
 }

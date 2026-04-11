@@ -59,4 +59,8 @@ public class Logic {
     public List<User> getAllCoordinators() throws EventException {
         return DALManager.getInstance().getUsersDAO().getAllCoordinators();
     }
+
+    public String getCoordinatorsForEvent(int eventId) throws EventException {
+        return DALManager.getInstance().getUsersDAO().getCoordinatorsForEvent(eventId);
+    }
 }

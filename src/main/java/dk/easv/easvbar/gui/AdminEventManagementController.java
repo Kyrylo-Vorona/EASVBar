@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AdminEventManagementController implements Initializable {
@@ -27,6 +28,8 @@ public class AdminEventManagementController implements Initializable {
     private TableColumn<Event, String> eventDateColumn;
     @FXML
     private TableColumn<Event, String> eventLocationColumn;
+    @FXML
+    private TableColumn<Event, String> coordinatorsColumn;
     @FXML
     private TableView<Event> eventTable;
     private ObservableList<Event> eventList;
@@ -52,6 +55,19 @@ public class AdminEventManagementController implements Initializable {
         }
     }
 
+    public void openAssignCoordinatorView(ActionEvent event) {
+        Event selected = eventTable.getSelectionModel().getSelectedItem();
+        if (selected != null) {
+            try {
+                FXMLLoader loader = openview.openView("/dk/easv/easvbar/gui/assignCoordinatorView.fxml", event);
+                AssignCoordinatorController controller = loader.getController();
+                controller.setLabel(selected);
+            } catch (EventException e) {
+                OpenView.showErrorAlert(e.getMessage());
+            }
+        }
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
@@ -63,10 +79,21 @@ public class AdminEventManagementController implements Initializable {
 
     private void readDataIntoList() throws EventException {
         eventList = FXCollections.observableArrayList();
-        eventList.addAll(logic.getAllEvents());
+        List<Event> allEvents = logic.getAllEvents();
+        for (Event e : allEvents) {
+            try {
+                String names = logic.getCoordinatorsForEvent(e.getId());
+                e.setCoordinatorNames(names);
+                eventList.add(e);
+            } catch (Exception ex) {
+                e.setCoordinatorNames("Error loading");
+                eventList.add(e);
+            }
+        }
         eventTable.setItems(eventList);
         eventNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         eventDateColumn.setCellValueFactory(new PropertyValueFactory<>("startTime"));
         eventLocationColumn.setCellValueFactory(new PropertyValueFactory<>("location"));
+        coordinatorsColumn.setCellValueFactory(new PropertyValueFactory<>("coordinatorNames"));
     }
 }

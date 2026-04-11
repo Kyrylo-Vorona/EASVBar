@@ -110,4 +110,21 @@ public class UsersDAO {
         }
         return coordinators;
     }
+
+    public String getCoordinatorsForEvent(int eventId) throws EventException {
+        List<String> names = new ArrayList<>();
+        String sql = "SELECT u.username FROM Users u JOIN EventCoordinators ec ON u.id = ec.user_id WHERE ec.event_id = ?";
+
+        try (Connection con = cm.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, eventId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                names.add(rs.getString("username"));
+            }
+        }catch (SQLException e) {
+            throw new EventException("Could not get the list of movies", e);
+        }
+        return String.join(", ", names);
+    }
 }
