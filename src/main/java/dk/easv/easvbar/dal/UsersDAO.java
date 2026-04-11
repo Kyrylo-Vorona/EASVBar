@@ -60,13 +60,23 @@ public class UsersDAO {
     }
 
     public void deleteUser(User user) throws EventException {
+        String deleteLinks = "DELETE FROM EventCoordinators WHERE user_id = ?";
+        String deleteUser = "DELETE FROM Users WHERE id = ?";
         try (Connection con = cm.getConnection()) {
-            String add = "DELETE FROM Users WHERE id = ?";
-            PreparedStatement pstmt = con.prepareStatement(add);
-            pstmt.setInt(1, user.getId());
-            pstmt.executeUpdate();
+            con.setAutoCommit(false);
+            try (PreparedStatement psLinks = con.prepareStatement(deleteLinks);
+                 PreparedStatement psUser = con.prepareStatement(deleteUser)) {
+                psLinks.setInt(1, user.getId());
+                psLinks.executeUpdate();
+                psUser.setInt(1, user.getId());
+                psUser.executeUpdate();
+                con.commit();
+            } catch (SQLException e) {
+                con.rollback();
+                throw e;
+            }
         } catch (SQLException e) {
-            throw new EventException("Database error: Could not delete selected user", e);
+            throw new EventException("Database error: Could not delete user and their assignments", e);
         }
     }
 

@@ -40,14 +40,14 @@
 
                         <TextArea fx:id="txtNotes" prefHeight="100.0" promptText="Notes / Extra Information" styleClass="description-textarea" wrapText="true" VBox.vgrow="ALWAYS" />
 
-                        <TextField fx:id="txtTickets" prefHeight="40.0" promptText="Price for standart ticket" styleClass="login-input" />
+                        <TextField fx:id="txtPrice" prefHeight="40.0" promptText="Price for standart ticket" styleClass="login-input" />
                     </children>
                 </VBox>
 
                 <HBox alignment="CENTER_RIGHT" spacing="15.0">
                     <children>
                         <Button mnemonicParsing="false" onAction="#handleCancel" prefWidth="100.0" styleClass="sign-in-button" text="Cancel" />
-                        <Button mnemonicParsing="false" onAction="#handleCreateEvent" prefWidth="100.0" styleClass="sign-in-button" text="Create" />
+                        <Button fx:id="btnSave" mnemonicParsing="false" onAction="#handleCreateEvent" prefWidth="100.0" styleClass="sign-in-button" text="Create" />
                     </children>
                 </HBox>
             </children>

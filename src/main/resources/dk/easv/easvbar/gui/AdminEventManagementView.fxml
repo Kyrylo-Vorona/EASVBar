@@ -47,7 +47,7 @@
                 <HBox alignment="CENTER" spacing="10.0">
                     <children>
                         <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#openAssignCoordinatorView" prefHeight="45.0" styleClass="admin-button" text="Assign Coordinator" HBox.hgrow="ALWAYS" />
-                        <Button maxWidth="Infinity" mnemonicParsing="false" prefHeight="45.0" styleClass="admin-button" text="Delete Event" HBox.hgrow="ALWAYS" />
+                        <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#deleteEvent" prefHeight="45.0" styleClass="admin-button" text="Delete Event" HBox.hgrow="ALWAYS" />
                         <Region prefWidth="30.0" />
                         <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#backToUserManagement" prefHeight="45.0" styleClass="user-management-button" text="User Management" HBox.hgrow="ALWAYS" />
                     </children>

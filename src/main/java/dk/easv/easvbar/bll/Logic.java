@@ -48,6 +48,14 @@ public class Logic {
         DALManager.getInstance().getEventsDAO().createEvent(name, start,  end, loc, guide, notes, price);
     }
 
+    public void editEvent(Event event) throws EventException {
+        DALManager.getInstance().getEventsDAO().editEvent(event);
+    }
+
+    public void deleteEvent(Event event) throws EventException {
+        DALManager.getInstance().getEventsDAO().deleteEvent(event);
+    }
+
     public void assignCoordinatorToEvent(int userId, int eventId) throws EventException {
         DALManager.getInstance().getEventsDAO().assignCoordinatorToEvent(userId, eventId);
     }

@@ -4,6 +4,7 @@ import dk.easv.easvbar.be.Event;
 import dk.easv.easvbar.be.EventException;
 import dk.easv.easvbar.be.User;
 import dk.easv.easvbar.bll.Logic;
+import dk.easv.easvbar.dal.DALManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -67,6 +68,31 @@ public class CoordinatorEventManagementController implements Initializable {
             openview.openView(filepath, event);
         } catch (EventException e) {
             OpenView.showErrorAlert(e.getMessage());
+        }
+    }
+
+    public void openEditEventView(ActionEvent event) {
+        Event selected = eventTable.getSelectionModel().getSelectedItem();
+        if (selected != null) {
+            try {
+                FXMLLoader loader = openview.openView("/dk/easv/easvbar/gui/CreateEventView.fxml", event);
+                CreateEventController controller = loader.getController();
+                controller.setEventData(selected);
+            } catch (EventException e) {
+                OpenView.showErrorAlert(e.getMessage());
+            }
+        }
+    }
+
+    public void deleteEvent (ActionEvent event) {
+        Event selected = eventTable.getSelectionModel().getSelectedItem();
+        if (selected != null) {
+            try {
+                DALManager.getInstance().getEventsDAO().deleteEvent(selected);
+                readDataIntoList();
+            } catch (EventException e) {
+                OpenView.showErrorAlert(e.getMessage());
+            }
         }
     }
 

@@ -44,7 +44,6 @@ public class EventsDAO {
                 psEvent.setString(6, notes);
                 psEvent.setInt(7, price);
                 psEvent.executeUpdate();
-
                 ResultSet rs = psEvent.getGeneratedKeys();
                 if (rs.next()) {
                     int newEventId = rs.getInt(1);
@@ -63,6 +62,60 @@ public class EventsDAO {
             }
         } catch (SQLException e) {
             throw new EventException("Could not create event and default ticket", e);
+        }
+    }
+
+    public void editEvent(Event event) throws EventException {
+        String sqlUpdateEvent = "UPDATE Events SET name=?, start_time=?, end_time=?, location=?, location_guidance=?, notes=?, price=? WHERE id=?";
+        String sqlUpdateTicket = "UPDATE TicketTypes SET price=? WHERE event_id=? AND name='Standard'";
+        try (Connection con = cm.getConnection()) {
+            con.setAutoCommit(false);
+            try (PreparedStatement psEvent = con.prepareStatement(sqlUpdateEvent);
+                 PreparedStatement psTicket = con.prepareStatement(sqlUpdateTicket)) {
+                psEvent.setString(1, event.getName());
+                psEvent.setString(2, event.getStartTime());
+                psEvent.setString(3, event.getEndTime());
+                psEvent.setString(4, event.getLocation());
+                psEvent.setString(5, event.getLocationGuidance());
+                psEvent.setString(6, event.getNotes());
+                psEvent.setInt(7, event.getPrice());
+                psEvent.setInt(8, event.getId());
+                psEvent.executeUpdate();
+                psTicket.setDouble(1, event.getPrice());
+                psTicket.setInt(2, event.getId());
+                psTicket.executeUpdate();
+                con.commit();
+            } catch (SQLException e) {
+                con.rollback();
+                throw e;
+            }
+        } catch (SQLException e) {
+            throw new EventException("Database error: Could not update event", e);
+        }
+    }
+
+    public void deleteEvent(Event event) throws EventException {
+        String sqlDeleteCoords = "DELETE FROM EventCoordinators WHERE event_id = ?";
+        String sqlDeleteTickets = "DELETE FROM TicketTypes WHERE event_id = ?";
+        String sqlDeleteEvent = "DELETE FROM Events WHERE id = ?";
+        try (Connection con = cm.getConnection()) {
+            con.setAutoCommit(false);
+            try (PreparedStatement ps1 = con.prepareStatement(sqlDeleteCoords);
+                 PreparedStatement ps2 = con.prepareStatement(sqlDeleteTickets);
+                 PreparedStatement ps3 = con.prepareStatement(sqlDeleteEvent)) {
+                ps1.setInt(1, event.getId());
+                ps1.executeUpdate();
+                ps2.setInt(1, event.getId());
+                ps2.executeUpdate();
+                ps3.setInt(1, event.getId());
+                ps3.executeUpdate();
+                con.commit();
+            } catch (SQLException e) {
+                con.rollback();
+                throw e;
+            }
+        } catch (SQLException e) {
+            throw new EventException("Database error: Could not delete event", e);
         }
     }
 

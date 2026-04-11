@@ -39,8 +39,8 @@
                         <HBox spacing="10.0">
                             <children>
                                 <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#CreateEvent" prefHeight="40.0" styleClass="admin-button" text="Create Event" HBox.hgrow="ALWAYS" />
-                                <Button maxWidth="Infinity" mnemonicParsing="false" prefHeight="40.0" styleClass="admin-button" text="Edit Event" HBox.hgrow="ALWAYS" />
-                                <Button maxWidth="Infinity" mnemonicParsing="false" prefHeight="40.0" styleClass="admin-button" text="Delete" HBox.hgrow="ALWAYS" />
+                                <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#openEditEventView" prefHeight="40.0" styleClass="admin-button" text="Edit Event" HBox.hgrow="ALWAYS" />
+                                <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#deleteEvent" prefHeight="40.0" styleClass="admin-button" text="Delete" HBox.hgrow="ALWAYS" />
                             </children>
                         </HBox>
                         <HBox spacing="10.0">
