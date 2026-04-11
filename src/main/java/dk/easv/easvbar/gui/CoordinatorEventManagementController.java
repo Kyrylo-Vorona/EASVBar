@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -23,6 +24,8 @@ public class CoordinatorEventManagementController implements Initializable {
     private TableColumn<Event, String> eventDateColumn;
     @FXML
     private TableColumn<Event, String> eventLocationColumn;
+    @FXML
+    private TableColumn<User, String> coordinatorsColumn;
     @FXML
     private TableView<Event> eventTable;
     private ObservableList<Event> eventList;
@@ -63,6 +66,19 @@ public class CoordinatorEventManagementController implements Initializable {
             openview.openView(filepath, event);
         } catch (EventException e) {
             OpenView.showErrorAlert(e.getMessage());
+        }
+    }
+
+    public void openAssignCoordinatorView(ActionEvent event) {
+        Event selected = eventTable.getSelectionModel().getSelectedItem();
+        if (selected != null) {
+            try {
+                FXMLLoader loader = openview.openView("/dk/easv/easvbar/gui/assignCoordinatorView.fxml", event);
+                AssignCoordinatorController controller = loader.getController();
+                controller.setLabel(selected);
+            } catch (EventException e) {
+                OpenView.showErrorAlert(e.getMessage());
+            }
         }
     }
 

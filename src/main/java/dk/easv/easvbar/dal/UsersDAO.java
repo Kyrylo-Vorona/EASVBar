@@ -89,4 +89,25 @@ public class UsersDAO {
         }
         return users;
     }
+
+    public List<User> getAllCoordinators() throws EventException {
+        List<User> coordinators = new ArrayList<>();
+        String sql = "SELECT * FROM Users WHERE role = 'COORDINATOR'";
+
+        try (Connection con = cm.getConnection();
+             Statement st = con.createStatement();
+             ResultSet rs = st.executeQuery(sql)) {
+            while (rs.next()) {
+                coordinators.add(new User(
+                        rs.getInt("id"),
+                        rs.getString("username"),
+                        rs.getString("role"),
+                        rs.getString("email")
+                ));
+            }
+        }catch (SQLException e) {
+            throw new EventException("Could not get the list of movies", e);
+        }
+        return coordinators;
+    }
 }

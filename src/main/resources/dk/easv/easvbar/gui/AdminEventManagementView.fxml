@@ -53,13 +53,12 @@
                     </children>
                 </HBox>
 
-                <TableView VBox.vgrow="ALWAYS">
+                <TableView fx:id="eventTable" VBox.vgrow="ALWAYS">
                     <columns>
-                        <TableColumn prefWidth="150.0" text="Event name" />
-                        <TableColumn prefWidth="80.0" text="Date" />
-                        <TableColumn prefWidth="150.0" text="Location" />
-                        <TableColumn prefWidth="120.0" text="Coordinators" />
-                        <TableColumn prefWidth="120.0" text="Amount of tickets" />
+                        <TableColumn fx:id="eventNameColumn" prefWidth="165.73584163188934" text="Event name" />
+                        <TableColumn fx:id="eventDateColumn" prefWidth="118.6414794921875" text="Date" />
+                        <TableColumn fx:id="eventLocationColumn" prefWidth="137.660400390625" text="Location" />
+                        <TableColumn prefWidth="244.5283203125" text="Coordinators" />
                     </columns>
                     <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

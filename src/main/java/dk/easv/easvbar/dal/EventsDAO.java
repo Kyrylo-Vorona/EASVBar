@@ -65,4 +65,18 @@ public class EventsDAO {
             throw new EventException("Could not create event and default ticket", e);
         }
     }
+
+    public void assignCoordinatorToEvent(int userId, int eventId) throws EventException {
+        String sql = "INSERT INTO EventCoordinators (user_id, event_id) VALUES (?, ?)";
+        try (Connection con = cm.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, userId);
+            ps.setInt(2, eventId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            if (e.getErrorCode() == 2627) {
+                throw new EventException("This coordinator is already assigned to this event.", e);
+            }
+        }
+    }
 }

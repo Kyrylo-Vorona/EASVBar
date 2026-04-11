@@ -15,6 +15,9 @@ public class Event {
         this.price = price;
     }
 
+    public int getId() {
+        return id;
+    }
     public String getName() { return name; }
     public String getStartTime() { return startTime; }
     public String getLocation() { return location; }
