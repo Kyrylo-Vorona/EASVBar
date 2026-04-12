@@ -66,6 +66,8 @@ public class AdminEventManagementController implements Initializable {
             } catch (EventException e) {
                 OpenView.showErrorAlert(e.getMessage());
             }
+        } else {
+            OpenView.showErrorAlert("Please select an event to go");
         }
     }
 
@@ -73,7 +75,7 @@ public class AdminEventManagementController implements Initializable {
         Event selected = eventTable.getSelectionModel().getSelectedItem();
         if (selected != null) {
             try {
-                DALManager.getInstance().getEventsDAO().deleteEvent(selected);
+                logic.deleteEvent(selected);
                 readDataIntoList();
             } catch (EventException e) {
                 OpenView.showErrorAlert(e.getMessage());

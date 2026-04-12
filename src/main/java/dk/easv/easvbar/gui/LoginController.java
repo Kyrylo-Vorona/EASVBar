@@ -28,6 +28,8 @@ public class LoginController {
                     String filepath = "/dk/easv/easvbar/gui/CoordinatorEventManagementView.fxml";
                     openview.openView(filepath, event);
                 }
+            } else {
+                OpenView.showErrorAlert("Wrong username or password");
             }
         } catch (EventException e) {
             OpenView.showErrorAlert(e.getMessage());

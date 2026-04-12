@@ -45,11 +45,17 @@ public class CoordinatorEventManagementController implements Initializable {
     }
 
     public void backToTicketManagement(ActionEvent event) {
-        try {
-            String filepath = "/dk/easv/easvbar/gui/CoordinatorTicketManagementView.fxml";
-            openview.openView(filepath, event);
-        } catch (EventException e) {
-            OpenView.showErrorAlert(e.getMessage());
+        Event selected = eventTable.getSelectionModel().getSelectedItem();
+        if (selected != null) {
+            try {
+                FXMLLoader loader = openview.openView("/dk/easv/easvbar/gui/CoordinatorTicketManagementView.fxml", event);
+                CoordinatorTicketManagementController controller = loader.getController();
+                controller.setLabel(selected);
+            } catch (EventException e) {
+                OpenView.showErrorAlert(e.getMessage());
+            }
+        } else {
+            OpenView.showErrorAlert("Please select an event to go");
         }
     }
 
@@ -81,6 +87,8 @@ public class CoordinatorEventManagementController implements Initializable {
             } catch (EventException e) {
                 OpenView.showErrorAlert(e.getMessage());
             }
+        } else {
+            OpenView.showErrorAlert("Please select an event to go");
         }
     }
 
@@ -106,6 +114,8 @@ public class CoordinatorEventManagementController implements Initializable {
             } catch (EventException e) {
                 OpenView.showErrorAlert(e.getMessage());
             }
+        } else {
+            OpenView.showErrorAlert("Please select an event to go");
         }
     }
 

@@ -15,29 +15,29 @@
                 <Font size="24.0" />
             </font>
         </Label>
-        <Button layoutX="547.0" layoutY="28.0" mnemonicParsing="false" styleClass="logout-button" text="Log Out">
+        <Button layoutX="547.0" layoutY="28.0" mnemonicParsing="false" onAction="#logOut" styleClass="logout-button" text="Log Out">
             <font>
                 <Font size="13.0" />
             </font>
         </Button>
-        <Label layoutX="48.0" layoutY="70.0" styleClass="subtitle" text="Ticket management - EASV party">
+        <Label fx:id="label" layoutX="48.0" layoutY="70.0" styleClass="subtitle" text="Ticket management - EASV party">
             <font>
                 <Font size="18.0" />
             </font>
         </Label>
         <HBox layoutX="48.0" layoutY="106.0" prefHeight="43.0" prefWidth="611.0" spacing="5.0">
             <children>
-                <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="121.0" styleClass="admin-button" text="Create ticket" />
-                <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="109.0" styleClass="admin-button" text="Edit ticket" />
-                <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="158.0" styleClass="admin-button" text="Delete ticket" />
-                <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="227.0" styleClass="user-management-button" text="Back to event management" />
+                <Button mnemonicParsing="false" onAction="#openCreateTicketView" prefHeight="43.0" prefWidth="121.0" styleClass="admin-button" text="Create ticket" />
+                <Button mnemonicParsing="false" onAction="#openEditTicketView" prefHeight="43.0" prefWidth="109.0" styleClass="admin-button" text="Edit ticket" />
+                <Button mnemonicParsing="false" onAction="#deleteTicket" prefHeight="43.0" prefWidth="158.0" styleClass="admin-button" text="Delete ticket" />
+                <Button mnemonicParsing="false" onAction="#backToEventManagement" prefHeight="43.0" prefWidth="227.0" styleClass="user-management-button" text="Back to event management" />
             </children>
         </HBox>
-        <TableView layoutX="50.0" layoutY="157.0" prefHeight="216.0" prefWidth="611.0">
+        <TableView fx:id="tblTicketTypes" layoutX="50.0" layoutY="157.0" prefHeight="216.0" prefWidth="611.0">
             <columns>
-                <TableColumn prefWidth="196.5283203125" text="Type" />
-                <TableColumn prefWidth="216.45281982421875" text="Price" />
-                <TableColumn prefWidth="197.4339599609375" text="Available" />
+                <TableColumn fx:id="colType" prefWidth="196.5283203125" text="Type" />
+                <TableColumn fx:id="colDescription" prefWidth="216.45281982421875" text="Description" />
+                <TableColumn fx:id="colPrice" prefWidth="197.4339599609375" text="Price" />
             </columns>
         </TableView>
     </children>

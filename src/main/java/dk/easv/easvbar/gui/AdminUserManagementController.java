@@ -68,6 +68,8 @@ public class AdminUserManagementController implements Initializable {
             } catch (EventException e) {
                 OpenView.showErrorAlert(e.getMessage());
             }
+        } else {
+            OpenView.showErrorAlert("Please select a user to go");
         }
     }
 

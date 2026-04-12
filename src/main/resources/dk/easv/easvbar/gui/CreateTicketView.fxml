@@ -4,44 +4,51 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.easvbar.gui.CreateTicketController">
-   <children>
-      <Label layoutX="42.0" layoutY="42.0" styleClass="login-title" text="Create ticket for: EASV party">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <VBox layoutX="44.0" layoutY="96.0" prefHeight="223.0" prefWidth="502.0" spacing="5.0">
-         <children>
-            <TextField prefHeight="71.0" prefWidth="503.0" promptText="Type" styleClass="login-input">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </TextField>
-            <TextField prefHeight="69.0" prefWidth="503.0" promptText="Price" styleClass="login-input">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </TextField>
-            <TextField prefHeight="70.0" prefWidth="503.0" promptText="Quantity available" styleClass="login-input">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </TextField>
-         </children>
-      </VBox>
-      <Button layoutX="362.0" layoutY="337.0" mnemonicParsing="false" styleClass="sign-in-button" text="Cancel">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-      <Button layoutX="455.0" layoutY="337.0" mnemonicParsing="false" styleClass="sign-in-button" text="Create">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-   </children>
+    <children>
+        <Label fx:id="lblEventName" layoutX="40.0" layoutY="35.0" styleClass="login-title" text="Create ticket for: Event Name" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="35.0">
+            <font>
+                <Font name="System Bold" size="24.0" />
+            </font>
+        </Label>
+
+        <VBox layoutX="40.0" layoutY="90.0" prefWidth="520.0" spacing="15.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
+            <children>
+                <TextField fx:id="txtType" prefHeight="50.0" promptText="Ticket Type (e.g. VIP)" styleClass="login-input">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </TextField>
+                <TextField fx:id="txtDescription" prefHeight="50.0" promptText="Description" styleClass="login-input">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </TextField>
+                <TextField fx:id="txtPrice" prefHeight="50.0" promptText="Price (DKK)" styleClass="login-input">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </TextField>
+            </children>
+        </VBox>
+
+        <HBox layoutX="380.0" layoutY="330.0" spacing="20.0" AnchorPane.bottomAnchor="30.0" AnchorPane.rightAnchor="40.0">
+            <children>
+                <Button mnemonicParsing="false" onAction="#cancel" prefHeight="30.0" prefWidth="127.0" styleClass="sign-in-button" text="Cancel">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnCreate" mnemonicParsing="false" prefHeight="30.0" prefWidth="122.0" styleClass="sign-in-button" text="Create">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+            </children>
+        </HBox>
+    </children>
 </AnchorPane>

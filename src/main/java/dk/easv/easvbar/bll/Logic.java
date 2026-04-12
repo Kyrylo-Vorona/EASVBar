@@ -2,6 +2,7 @@ package dk.easv.easvbar.bll;
 
 import dk.easv.easvbar.be.Event;
 import dk.easv.easvbar.be.EventException;
+import dk.easv.easvbar.be.Ticket;
 import dk.easv.easvbar.be.User;
 import dk.easv.easvbar.dal.DALManager;
 
@@ -56,6 +57,14 @@ public class Logic {
         DALManager.getInstance().getEventsDAO().deleteEvent(event);
     }
 
+    public void createTicket(int eventId, String name, String desc, double price) throws EventException {
+        DALManager.getInstance().getTicketsDAO().createTicketType(eventId, name, desc, price);
+    }
+
+    public void deleteTicket(Ticket ticket) throws EventException {
+        DALManager.getInstance().getTicketsDAO().deleteTicketType(ticket.getId());
+    }
+
     public void assignCoordinatorToEvent(int userId, int eventId) throws EventException {
         DALManager.getInstance().getEventsDAO().assignCoordinatorToEvent(userId, eventId);
     }
@@ -70,5 +79,9 @@ public class Logic {
 
     public String getCoordinatorsForEvent(int eventId) throws EventException {
         return DALManager.getInstance().getUsersDAO().getCoordinatorsForEvent(eventId);
+    }
+
+    public List<Ticket> getTicketForEvent(int eventId) throws EventException {
+        return DALManager.getInstance().getTicketsDAO().getTicketsForEvent(eventId);
     }
 }
