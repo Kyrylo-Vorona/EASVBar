@@ -27,6 +27,11 @@ public class AssignCoordinatorController implements Initializable {
     private Event currentEvent;
     private Logic logic = Logic.getInstance();
     OpenView openview = new OpenView();
+    private String previousViewPath;
+
+    public void setPreviousView(String path) {
+        this.previousViewPath = path;
+    }
 
     public void setLabel(Event selected) {
         this.currentEvent = selected;
@@ -64,7 +69,7 @@ public class AssignCoordinatorController implements Initializable {
 
     public void cancel(ActionEvent event) {
         try {
-            String filepath = "/dk/easv/easvbar/gui/CoordinatorEventManagementView.fxml";
+            String filepath = previousViewPath;
             openview.openView(filepath, event);
         }catch(EventException e){
             OpenView.showErrorAlert(e.getMessage());

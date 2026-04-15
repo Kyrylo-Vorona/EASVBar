@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<VBox fx:id="ticketNode" spacing="10" style="-fx-background-color: white; -fx-padding: 20; -fx-border-color: black; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <Label fx:id="lblEventName" style="-fx-font-size: 20; -fx-font-weight: bold;" text="EVENT NAME" />
+    <Label fx:id="lblType" text="Ticket Type: VIP" />
+    <Label fx:id="lblCustomer" text="Customer: Ivan Ivanov" />
+    <Label fx:id="lblLocation" text="Location: EASV" />
+    <Label fx:id="lblDate" text="Date: 10 April, 18:00" />
+    <Separator />
+    <Label fx:id="lblUniqueCode" style="-fx-font-family: 'Courier New';" text="CODE: A1B2-C3D4" />
+    <ImageView fx:id="imgQRCode" fitHeight="100" fitWidth="100" />
+</VBox>

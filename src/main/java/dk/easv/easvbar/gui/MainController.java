@@ -20,6 +20,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
+
+    // to log in as an admin: username "admin" ; password "admin123"
+    // to log in as a coordinator: username "Coordinator1" ; password "coordinator123"
+
     @FXML
     private VBox eventContainer;
 

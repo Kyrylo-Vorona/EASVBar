@@ -66,8 +66,8 @@ public class Logic {
         DALManager.getInstance().getTicketsDAO().deleteTicketType(ticket.getId());
     }
 
-    public void sellTicket(int ticketTypeId, String customerName, String customerEmail) throws EventException {
-        DALManager.getInstance().getTicketsDAO().sellTicket(ticketTypeId, customerName, customerEmail);
+    public void sellTicket(int ticketTypeId, String customerName, String customerEmail, String uniqueCode) throws EventException {
+        DALManager.getInstance().getTicketsDAO().sellTicket(ticketTypeId, customerName, customerEmail, uniqueCode);
     }
 
     public void assignCoordinatorToEvent(int userId, int eventId) throws EventException {
@@ -92,5 +92,10 @@ public class Logic {
 
     public List<SoldTicket> getSoldTicketsForEvent(int eventId) throws EventException {
         return DALManager.getInstance().getTicketsDAO().getSoldTicketsForEvent(eventId);
+    }
+
+    public boolean isValidEmail(String email) {
+        if (email == null) return false;
+        return email.contains("@") && email.contains(".");
     }
 }

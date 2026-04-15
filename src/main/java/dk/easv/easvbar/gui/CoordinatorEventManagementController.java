@@ -116,6 +116,7 @@ public class CoordinatorEventManagementController implements Initializable {
                 FXMLLoader loader = openview.openView("/dk/easv/easvbar/gui/assignCoordinatorView.fxml", event);
                 AssignCoordinatorController controller = loader.getController();
                 controller.setLabel(selected);
+                controller.setPreviousView("/dk/easv/easvbar/gui/CoordinatorEventManagementView.fxml");
             } catch (EventException e) {
                 OpenView.showErrorAlert(e.getMessage());
             }

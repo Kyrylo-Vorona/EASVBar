@@ -9,6 +9,10 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class LoginController {
+
+    // to log in as an admin: username "admin" ; password "admin123"
+    // to log in as a coordinator: username "Coordinator1" ; password "coordinator123"
+
     @FXML
     private TextField username;
     @FXML

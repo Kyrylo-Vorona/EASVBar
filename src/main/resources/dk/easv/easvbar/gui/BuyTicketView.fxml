@@ -17,9 +17,9 @@
             <Label style="-fx-font-size: 28; -fx-font-weight: bold;" styleClass="login-title" text="Buy ticket" />
             <Label style="-fx-font-size: 18;" styleClass="subtitle" text="Please fill the fields" />
 
-            <TextField fx:id="txtName" maxWidth="400" prefHeight="50" prefWidth="400" promptText="Name" style="-fx-font-size: 16;" styleClass="login-input" />
+            <TextField fx:id="nameField" maxWidth="400" prefHeight="50" prefWidth="400" promptText="Name" style="-fx-font-size: 16;" styleClass="login-input" />
 
-            <TextField fx:id="txtEmail" maxWidth="400" prefHeight="50" prefWidth="400" promptText="Email" style="-fx-font-size: 16;" styleClass="login-input" />
+            <TextField fx:id="emailField" maxWidth="400" prefHeight="50" prefWidth="400" promptText="Email" style="-fx-font-size: 16;" styleClass="login-input" />
 
             <VBox alignment="CENTER" spacing="15">
                 <ComboBox fx:id="ticketTypeBox" maxWidth="400" prefHeight="50" prefWidth="400" promptText="Select ticket type" style="-fx-font-size: 16;" styleClass="combo-box" />

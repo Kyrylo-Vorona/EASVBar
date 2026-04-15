@@ -74,8 +74,7 @@ public class TicketsDAO {
         }
     }
 
-    public void sellTicket(int ticketTypeId, String customerName, String customerEmail) throws EventException {
-        String uniqueCode = java.util.UUID.randomUUID().toString().substring(0, 8).toUpperCase();
+    public void sellTicket(int ticketTypeId, String customerName, String customerEmail, String uniqueCode) throws EventException {
         String sql = "INSERT INTO Tickets (ticket_type_id, customer_name, customer_email, unique_code) VALUES (?, ?, ?, ?)";
         try (Connection con = cm.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
