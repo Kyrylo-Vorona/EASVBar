@@ -23,12 +23,12 @@
                     </font>
                 </Label>
 
-                <TableView fx:id="soldTicketsTable" VBox.vgrow="ALWAYS">
+                <TableView fx:id="tblSoldTickets" VBox.vgrow="ALWAYS">
                     <columns>
-                        <TableColumn fx:id="colCustomerName" prefWidth="150.0" text="Customer Name" />
-                        <TableColumn fx:id="colCustomerEmail" prefWidth="150.0" text="Email" />
-                        <TableColumn fx:id="colTicketType" prefWidth="100.0" text="Type" />
-                        <TableColumn fx:id="colUniqueCode" prefWidth="150.0" text="Unique ID" />
+                        <TableColumn fx:id="colName" prefWidth="150.0" text="Customer Name" />
+                        <TableColumn fx:id="colEmail" prefWidth="150.0" text="Email" />
+                        <TableColumn fx:id="colType" prefWidth="100.0" text="Type" />
+                        <TableColumn fx:id="colCode" prefWidth="150.0" text="Unique ID" />
                     </columns>
                     <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -37,7 +37,7 @@
 
                 <HBox alignment="CENTER_RIGHT" spacing="10.0">
                     <children>
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="129.0" styleClass="logout-button" text="Close" />
+                        <Button mnemonicParsing="false" onAction="#onClose" prefHeight="25.0" prefWidth="129.0" styleClass="logout-button" text="Close" />
                     </children>
                 </HBox>
             </children>

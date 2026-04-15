@@ -1,9 +1,6 @@
 package dk.easv.easvbar.bll;
 
-import dk.easv.easvbar.be.Event;
-import dk.easv.easvbar.be.EventException;
-import dk.easv.easvbar.be.Ticket;
-import dk.easv.easvbar.be.User;
+import dk.easv.easvbar.be.*;
 import dk.easv.easvbar.dal.DALManager;
 
 import java.util.List;
@@ -61,8 +58,16 @@ public class Logic {
         DALManager.getInstance().getTicketsDAO().createTicketType(eventId, name, desc, price);
     }
 
+    public void editTicket(Ticket ticket) throws EventException {
+        DALManager.getInstance().getTicketsDAO().editTicketType(ticket);
+    }
+
     public void deleteTicket(Ticket ticket) throws EventException {
         DALManager.getInstance().getTicketsDAO().deleteTicketType(ticket.getId());
+    }
+
+    public void sellTicket(int ticketTypeId, String customerName, String customerEmail) throws EventException {
+        DALManager.getInstance().getTicketsDAO().sellTicket(ticketTypeId, customerName, customerEmail);
     }
 
     public void assignCoordinatorToEvent(int userId, int eventId) throws EventException {
@@ -83,5 +88,9 @@ public class Logic {
 
     public List<Ticket> getTicketForEvent(int eventId) throws EventException {
         return DALManager.getInstance().getTicketsDAO().getTicketsForEvent(eventId);
+    }
+
+    public List<SoldTicket> getSoldTicketsForEvent(int eventId) throws EventException {
+        return DALManager.getInstance().getTicketsDAO().getSoldTicketsForEvent(eventId);
     }
 }

@@ -95,27 +95,32 @@ public class EventsDAO {
     }
 
     public void deleteEvent(Event event) throws EventException {
+        String sqlDeleteTickets = "DELETE FROM Tickets WHERE ticket_type_id IN (SELECT id FROM TicketTypes WHERE event_id = ?)";
+        String sqlDeleteTypes = "DELETE FROM TicketTypes WHERE event_id = ?";
         String sqlDeleteCoords = "DELETE FROM EventCoordinators WHERE event_id = ?";
-        String sqlDeleteTickets = "DELETE FROM TicketTypes WHERE event_id = ?";
         String sqlDeleteEvent = "DELETE FROM Events WHERE id = ?";
+
         try (Connection con = cm.getConnection()) {
             con.setAutoCommit(false);
-            try (PreparedStatement ps1 = con.prepareStatement(sqlDeleteCoords);
-                 PreparedStatement ps2 = con.prepareStatement(sqlDeleteTickets);
-                 PreparedStatement ps3 = con.prepareStatement(sqlDeleteEvent)) {
+            try (PreparedStatement ps1 = con.prepareStatement(sqlDeleteTickets);
+                 PreparedStatement ps2 = con.prepareStatement(sqlDeleteTypes);
+                 PreparedStatement ps3 = con.prepareStatement(sqlDeleteCoords);
+                 PreparedStatement ps4 = con.prepareStatement(sqlDeleteEvent)) {
                 ps1.setInt(1, event.getId());
                 ps1.executeUpdate();
                 ps2.setInt(1, event.getId());
                 ps2.executeUpdate();
                 ps3.setInt(1, event.getId());
                 ps3.executeUpdate();
+                ps4.setInt(1, event.getId());
+                ps4.executeUpdate();
                 con.commit();
             } catch (SQLException e) {
                 con.rollback();
                 throw e;
             }
         } catch (SQLException e) {
-            throw new EventException("Database error: Could not delete event", e);
+            throw new EventException("Could not delete event and associated data", e);
         }
     }
 

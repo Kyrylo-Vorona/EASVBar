@@ -1,6 +1,7 @@
 package dk.easv.easvbar.dal;
 
 import dk.easv.easvbar.be.EventException;
+import dk.easv.easvbar.be.SoldTicket;
 import dk.easv.easvbar.be.Ticket;
 import java.sql.*;
 import java.util.ArrayList;
@@ -71,5 +72,42 @@ public class TicketsDAO {
         } catch (SQLException e) {
             throw new EventException("Could not delete selected event", e);
         }
+    }
+
+    public void sellTicket(int ticketTypeId, String customerName, String customerEmail) throws EventException {
+        String uniqueCode = java.util.UUID.randomUUID().toString().substring(0, 8).toUpperCase();
+        String sql = "INSERT INTO Tickets (ticket_type_id, customer_name, customer_email, unique_code) VALUES (?, ?, ?, ?)";
+        try (Connection con = cm.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, ticketTypeId);
+            ps.setString(2, customerName);
+            ps.setString(3, customerEmail);
+            ps.setString(4, uniqueCode);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new EventException("Database error: Could not complete the purchase", e);
+        }
+    }
+
+    public List<SoldTicket> getSoldTicketsForEvent(int eventId) throws EventException {
+        List<SoldTicket> soldTickets = new ArrayList<>();
+        String sql = "SELECT t.customer_name, t.customer_email, tt.name as type_name, t.unique_code FROM Tickets t JOIN TicketTypes tt ON t.ticket_type_id = tt.id WHERE tt.event_id = ?";
+
+        try (Connection con = cm.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, eventId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                soldTickets.add(new SoldTicket(
+                        rs.getString("customer_name"),
+                        rs.getString("customer_email"),
+                        rs.getString("type_name"),
+                        rs.getString("unique_code")
+                ));
+            }
+        } catch (SQLException e) {
+            throw new EventException("Could not load sold tickets list", e);
+        }
+        return soldTickets;
     }
 }

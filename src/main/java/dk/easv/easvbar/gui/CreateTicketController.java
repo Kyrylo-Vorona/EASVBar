@@ -52,4 +52,24 @@ public class CreateTicketController {
             OpenView.showErrorAlert(e.getMessage());
         }
     }
+
+    @FXML
+    private void handleCreateTicket(ActionEvent event) {
+        try {
+            int price = Integer.parseInt(txtPrice.getText());
+            String description = txtDescription.getText();
+            String type = txtType.getText();
+            if (ticketToEdit == null) {
+                logic.createTicket(ourEvent.getId(), type, description, price);
+            } else {
+                ticketToEdit.setName(type);
+                ticketToEdit.setDescription(description);
+                ticketToEdit.setPrice(price);
+                logic.editTicket(ticketToEdit);
+            }
+            cancel(event);
+        } catch (Exception e) {
+            OpenView.showErrorAlert("Error creating event: " + e.getMessage());
+        }
+    }
 }

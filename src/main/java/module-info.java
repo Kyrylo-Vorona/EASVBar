@@ -8,6 +8,7 @@ module dk.easv.easvbar {
     requires java.naming;
     //requires dk.easv.easvbar;
     //requires dk.easv.easvbar;
+    //requires dk.easv.easvbar;
 
 
     opens dk.easv.easvbar to javafx.fxml;

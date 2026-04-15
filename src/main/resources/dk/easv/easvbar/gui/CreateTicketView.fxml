@@ -43,7 +43,7 @@
                         <Font size="14.0" />
                     </font>
                 </Button>
-                <Button fx:id="btnCreate" mnemonicParsing="false" prefHeight="30.0" prefWidth="122.0" styleClass="sign-in-button" text="Create">
+                <Button fx:id="btnCreate" mnemonicParsing="false" onAction="#handleCreateTicket" prefHeight="30.0" prefWidth="122.0" styleClass="sign-in-button" text="Create">
                     <font>
                         <Font size="14.0" />
                     </font>

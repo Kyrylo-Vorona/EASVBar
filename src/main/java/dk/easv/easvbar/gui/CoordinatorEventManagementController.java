@@ -2,7 +2,6 @@ package dk.easv.easvbar.gui;
 
 import dk.easv.easvbar.be.Event;
 import dk.easv.easvbar.be.EventException;
-import dk.easv.easvbar.be.User;
 import dk.easv.easvbar.bll.Logic;
 import dk.easv.easvbar.dal.DALManager;
 import javafx.collections.FXCollections;
@@ -60,11 +59,17 @@ public class CoordinatorEventManagementController implements Initializable {
     }
 
     public void openSoldTicketsView(ActionEvent event) {
-        try {
-            String filepath = "/dk/easv/easvbar/gui/SoldTicketsView.fxml";
-            openview.openView(filepath, event);
-        } catch (EventException e) {
-            OpenView.showErrorAlert(e.getMessage());
+        Event selected = eventTable.getSelectionModel().getSelectedItem();
+        if (selected != null) {
+            try {
+                FXMLLoader loader = openview.openView("/dk/easv/easvbar/gui/SoldTicketsView.fxml", event);
+                SoldTicketsController controller = loader.getController();
+                controller.setEvent(selected);
+            } catch (EventException e) {
+                OpenView.showErrorAlert(e.getMessage());
+            }
+        } else {
+            OpenView.showErrorAlert("Please select an event to go");
         }
     }
 
